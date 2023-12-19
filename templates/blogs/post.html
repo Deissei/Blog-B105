@@ -7,16 +7,9 @@
     <div class="container-fluid">
         <main class="tm-main">
             <!-- Search form -->
-            <div class="row tm-row">
-                <div class="col-12">
-                    <form method="GET" class="form-inline tm-mb-80 tm-search-form">                
-                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
-                        <button class="tm-search-button" type="submit">
-                            <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
-                        </button>                                
-                    </form>
-                </div>                
-            </div>            
+            
+            {% include 'base/search.html' %}
+          
             <div class="row tm-row">
                 <div class="col-12">
                     <hr class="tm-hr-primary tm-mb-55">
@@ -36,6 +29,7 @@
                             <!-- <span class="d-block text-right tm-color-primary">Creative . Design . Business</span> -->
                         </div>
 
+                        {% if user.is_authenticated %}
                         <div class="news_d_footer" style="display: flex">
                             <form method="post" action="{% url 'add_like' blog.id %}">
                                 {% csrf_token %}
@@ -52,11 +46,16 @@
                                 </i>{{ blog.get_count_like }} people like this
                             </div>
                         </div>
-
+                        {% else %}
+                        {% endif %}
+                        
+                        {% if user == blog.user %}
                         <div style="margin-top: 40px">
                             <a style="margin-left: 20px; font-size: 30px; color: red; background-color: rgb(0,204,204); padding: 15px;" href="{% url 'get_delete' blog.id %}" class="delete_blog">Удалить пост</a>
                             <a style="margin-left: 20px; font-size: 30px; color: green; background-color: rgb(0,204,204); padding: 15px;" href="{% url 'update_blog' blog.id %}" class="update_blog">Изменить пост</a>
                         </div>
+                        {% else %}
+                        {% endif %}
                         
                         <!-- Comments -->
                         <div>

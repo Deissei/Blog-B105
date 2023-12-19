@@ -6,6 +6,9 @@ from apps.tags.models import Tag
 
 
 def create_blog(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
     tags = Tag.objects.all()
     if request.method == "POST":
         title = request.POST['title']
@@ -100,6 +103,11 @@ def update_blog(request, pk):
 
 
 def homepage(request):
+    if request.method == 'POST':
+        seacrh = request.POST['search']
+        blogs = Blog.objects.filter(title__icontains=seacrh)
+        return render(request, 'blogs/index.html', locals())
+
     blogs = Blog.objects.all()
 
     return render(request, 'blogs/index.html', locals())

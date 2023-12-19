@@ -13,18 +13,36 @@
                     <i class="fas fa-home"></i>
                     Главная
                 </a></li>
+
+                {% if user.is_authenticated %}
                 <li class="tm-nav-item"><a href="{% url 'create_blog' %}" class="tm-nav-link">
                     <i class="fas fa-pen"></i>
                     Создать пост
                 </a></li>
+                {% else %}
+                {% endif %}
+
                 <li class="tm-nav-item"><a href="{% url 'tags' %}" class="tm-nav-link">
                     <i class="fas fa-users"></i>
-                    Тегич
+                    Теги
                 </a></li>
-                <li class="tm-nav-item"><a href="contact.html" class="tm-nav-link">
-                    <i class="far fa-comments"></i>
-                    Contact Us
+                {% if not user.is_authenticated %}
+                <li class="tm-nav-item"><a href="{% url 'sign_up' %}" class="tm-nav-link">
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                    Регистрация
                 </a></li>
+
+                <li class="tm-nav-item"><a href="{% url 'login' %}" class="tm-nav-link">
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                    Вход
+                </a></li>
+                {% else %}
+                <li class="tm-nav-item"><a href="{% url 'logout' %}" class="tm-nav-link">
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                    Выйти
+                </a></li>
+                {% endif %}
+
             </ul>
         </nav>
         <div class="tm-mb-65">
