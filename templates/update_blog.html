@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+
+
+{% block content %}
+
+    {% include "base/header.html" %}
+
+    <div class="container-fluid">
+        <main class="tm-main">
+            <form action="" method="post" enctype="multipart/form-data" class="create_blog">
+            {% csrf_token %}
+            <label for="title">Название:</label>
+            <input type="text" name="title" id="" value="{{ post_update.title }}" required>
+
+            <label for="description">Описание:</label>
+            <textarea name="description" id="" cols="30" rows="10" required >{{ post_update.description }}</textarea>
+
+            <label for="image">Фото:</label>
+            На данный момент
+            <a href="{{ post_update.image.url }}">{{ post_update.image.url }}</a>
+            <input type="file" name="image" id="">
+
+            <br>
+            <button type="submit" style="margin-top: 40px">Создать пост</button>
+        </form>
+        </main>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+
+{% block content %}
+
+    {% include 'base/header.html' %}
+
+    <div class="container-fluid">
+        <main class="tm-main">
+
+            <div style="display: flex; justify-content: center;">
+                <form action="" method="post" style="width: 30%">
+                    {% csrf_token %}
+                    <label for="username">Имя пользователя:</label>
+                    <label>
+                        <input class=" tm-search-input" type="text" name="username" required>
+                    </label>
+
+                    <label for="password">Пароль:</label>
+                    <label>
+                        <input class=" tm-search-input" type="password" name="password" required>
+                    </label>
+                
+                    <label for="password">Повторите пароль:</label>
+                    <label>
+                        <input class=" tm-search-input" type="password" name="repassword" required>
+                    </label>
+                    
+                    {% if error %}
+                        <p style="color: red">* {{ error }}</p>
+                    {% else %}
+                    {% endif %}
+
+                    <button type="submit" style="width: 100%">Войти</button>
+                </form>
+            </div>
+
+            {% include 'base/footer.html' %}
+        </main>
+    </div>
+
+{% endblock content %}

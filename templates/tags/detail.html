@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+    {% include "base/header.html" %}
+
+    <div class="container-fluid">
+        <main class="tm-main">
+
+            <div style="display: flex; align-items: center">
+                <h2 style="padding-right: 20px">{{ tag.title }}</h2>
+                <a style="margin-left: 20px; font-size: 20px; color: red; background-color: rgb(0,204,204); padding: 5px;" href="{% url 'delete_tag' tag.id %}" class="delete_blog">Удалить тег</a>
+                <a style="margin-left: 20px; font-size: 20px; color: green; background-color: rgb(0,204,204); padding: 5px;" href="{% url 'update_tag' tag.id %}" class="update_blog">Изменить тег</a>
+            </div>
+
+
+
+            <div class="row tm-row">
+                {% for blog in tag.blog.all %}
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <a href="{% url 'detail_blog' blog.id %}" class="effect-lily tm-post-link tm-pt-60">
+                        <div class="tm-post-link-inner">
+                            <img src="{{ blog.image.url }}" alt="Image" class="img-fluid">
+                        </div>
+                        <!-- <span class="position-absolute tm-new-badge">New</span> -->
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ blog.title }}</h2>
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+
+            {% include "base/footer.html" %}
+        </main>
+    </div>
+
+
+{% endblock content %}

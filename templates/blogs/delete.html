@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вы уверены удалить пост</title>
+    <style>
+        .help-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .delete {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .a-delete {
+            margin-right: 50px;
+            text-decoration: none;
+            background-color: red;
+            padding: 20px;
+            color: white;
+        }
+        .a-update {
+            text-decoration: none;
+            background-color: green;
+            padding: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="body-content">
+        <h2 class="help-text">
+            Вы уверены что хотите удалить пост
+        </h2>
+        <div class="delete">
+            <a href="{% url 'delete_blog' blog.id %}" class="a-delete">Да</a>
+            <a href="{% url 'detail_blog' blog.id %}" class="a-update">Нет</a>
+        </div>
+    </div>
+
+</body>
+</html>
