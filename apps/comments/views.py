@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 from apps.comments.models import Comment
 
+
 def delete_comment(request, pk):
     comment = Comment.objects.get(id=pk)
     comment.delete()

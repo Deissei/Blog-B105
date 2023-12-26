@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'apps.comments',
     'apps.tags',
     'apps.likes',
+    'apps.users',
 ]
+
+AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

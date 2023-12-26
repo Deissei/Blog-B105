@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+
+{% block content %}
+
+    {% include 'base/header.html' %}
+
+    <div class="container-fluid">
+        <main class="tm-main">
+
+            <div style="display: flex; justify-content: center;">
+                <form action="" method="post" style="width: 30%">
+                    {% csrf_token %}
+                
+                    <label for="code">Код:</label>
+                    <label>
+                        <input class=" tm-search-input" type="text" name="code" required>
+                    </label>
+                
+                    {% if error %}
+                        <p style="color: red">* {{ error }}</p>
+                    {% else %}
+                    {% endif %}
+
+                    <button type="submit" style="width: 100%">Войти и подтвердить</button>
+                </form>
+            </div>
+
+            {% include 'base/footer.html' %}
+        </main>
+    </div>
+
+{% endblock content %}

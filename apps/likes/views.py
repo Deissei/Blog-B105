@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from apps.likes.models import Like
 from apps.blogs.models import Blog
-from apps.comments.models import Comment,LikeForComment
+from apps.comments.models import Comment, LikeForComment
 
 
 
